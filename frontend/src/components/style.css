@@ -1,0 +1,33 @@
+.authForm{
+    border: 1px solid black;
+    width: 40%;
+    margin: 50px auto;
+    padding: 10px;
+
+}
+
+.authForm input{
+    width: 100%;
+    margin: 20px 0px;
+    font-size: 20px;
+}
+
+.authForm >button{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Heading{
+    background-color: blueviolet;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.seatNo{
+    width: 100px;
+}

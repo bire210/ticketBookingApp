@@ -13,3 +13,35 @@
   align-items: center;
 
 }
+
+
+.searchForm{
+  width: 70%;
+  margin: 40px auto;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchForm input{
+  font-size: 25px;
+}
+.Table{
+  width: 100%;
+  margin: 40px auto;
+  font-size: 30px;
+  display: flex;
+  border: 1px solid red;
+  justify-content: space-around;
+}
+.Table th,td{
+  width: 200px;
+}
+
+.seatcontainer{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+   width: 80%;
+   margin: 40px auto;
+}
+

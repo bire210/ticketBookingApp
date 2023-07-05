@@ -6,8 +6,8 @@ const createBusControler=async(req,res)=>{
     try {
         const newBus=new busModel({
             name:req.body.name,
-            from:req.body.from,
-            to:req.body.to,
+            from:req.body.from.toLowerCase(),
+            to:req.body.to.toLowerCase(),
             price:req.body.price,
             seats:ob
         })
@@ -18,9 +18,10 @@ const createBusControler=async(req,res)=>{
     }
 }
 const searchBusControler=async(req,res)=>{
+    
     const {from,to}=req.body;
     try {
-        const bustList=await busModel.find({from:from,to:to})
+        const bustList=await busModel.find({from:from.toLowerCase(),to:to.toLowerCase()})
         res.status(200).json(bustList)
     } catch (error) {
         res.status(500).json(error.message)

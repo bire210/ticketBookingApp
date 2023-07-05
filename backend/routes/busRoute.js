@@ -4,7 +4,7 @@ const { createBusControler, searchBusControler, searchABusControler } = require(
 const busRouter=express.Router();
 
 busRouter.post("/create",createBusControler)
-busRouter.get("/search",searchBusControler)
+busRouter.post("/search",searchBusControler)
 busRouter.get("/search/:id",searchABusControler)
 
 
