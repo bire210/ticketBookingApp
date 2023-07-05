@@ -1,0 +1,15 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar{
+  background-color: blueviolet;
+  color: white;
+  padding: 20px 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
