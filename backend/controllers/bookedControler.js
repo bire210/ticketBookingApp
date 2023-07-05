@@ -1,7 +1,7 @@
 const cartModel=require("../models/cartModel");
 const busModel=require("../models/busModel");
 const bookedModel=require("../models/bookedModel");
-const { upDateBus } = require("../utils/util");
+
 
 
 const getBookeDTicket=async(req,res)=>{
@@ -30,13 +30,10 @@ const BookeDTicket=async(req,res)=>{
         const bookedTicket=await cartModel.findById(req.params.id)
         let updateSeat=bookedTicket.seatNo;
         const delelteFromCart=await cartModel.findByIdAndDelete(req.params.id)
-        const busSeatRem=upDateBus(bookedTicket.seatNo)
-        // const uddatebus=await busModel.updateOne({$set:{[`seat.${updateSeat}`]:true}})
-
         const filter = { _id: bookedTicket.busId }; // Replace with the actual document _id
 
         // Construct the update object to toggle the seat value to true dynamically
-        const update = { $set: { seat: busSeatRem } };
+        const update = { $set: { [`seats.${updateSeat}`]: true } };
     
         const result = await busModel.updateOne(filter, update);
         console.log(result)
@@ -59,7 +56,7 @@ const cancelBookeDTicket=async(req,res)=>{
         const ticket=await bookedModel.findByIdAndDelete(req.params.id)
         console.log(ticket)
         let updateSeat=ticket.seatNo;
-        const bus=await busModel.updateOne({_id:ticket.busId},{$set:{[`seat.${updateSeat}`]:false}})
+        const bus=await busModel.updateOne({_id:ticket.busId},{$set:{[`seats.${updateSeat}`]:false}})
         res.status(200).json(" Ticke has been canceld")
     } catch (error) {
         res.status(500).json(error.message)

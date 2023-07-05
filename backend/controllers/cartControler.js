@@ -1,5 +1,6 @@
 const busModel=require("../models/busModel");
 const cartModel=require("../models/cartModel")
+const authenticate=require("../middlewares/authMiddleware")
 
 const getAllcart=async(req,res)=>{
 try {
@@ -33,8 +34,6 @@ const cancelTocart=async(req,res)=>{
 const editCart=async(req,res)=>{
 
 }
-
-
 
 
 module.exports={

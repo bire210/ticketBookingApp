@@ -9,8 +9,11 @@ const createBus=function(){
 }
 
 
+
 const upDateBus=function(seatNo){
-return(ob[seatNo]=true)
+    console.log(ob)
+ob[seatNo]=true
+return(ob)
 }
 
 module.exports={createBus,upDateBus}

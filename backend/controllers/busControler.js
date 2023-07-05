@@ -2,14 +2,14 @@ const busModel=require("../models/busModel");
 const { createBus } = require("../utils/util");
 
 const createBusControler=async(req,res)=>{
- 
+ const ob=createBus()
     try {
         const newBus=new busModel({
             name:req.body.name,
             from:req.body.from,
             to:req.body.to,
             price:req.body.price,
-            seats:createBus
+            seats:ob
         })
         const saved=await newBus.save();
         res.status(200).json(saved)

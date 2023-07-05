@@ -1,15 +1,16 @@
 const express=require("express");
 const { getBookeDTicket, BookeDTicket, cancelBookeDTicket, getABookeDTicket } = require("../controllers/bookedControler");
 const bookedRouter=express.Router();
-
-bookedRouter.get("/",getBookeDTicket);
-bookedRouter.get("/:id",getABookeDTicket);
-
-bookedRouter.post("/:id",BookeDTicket);
-
-bookedRouter.delete("/:id",cancelBookeDTicket);
+const authenticate=require("../middlewares/authMiddleware")
 
 
+bookedRouter.get("/",authenticate,getBookeDTicket);
 
 
+bookedRouter.get("/:id",authenticate,getABookeDTicket);
+
+
+bookedRouter.post("/:id",authenticate,BookeDTicket);
+
+bookedRouter.delete("/:id",authenticate,cancelBookeDTicket);
 module.exports=bookedRouter
