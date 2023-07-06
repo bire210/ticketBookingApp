@@ -4,7 +4,7 @@ const authenticate=require("../middlewares/authMiddleware")
 
 const getAllcart=async(req,res)=>{
 try {
-    const allTicket=await cartModel.find({userId:req.body.userId})
+    const allTicket=await cartModel.find({userId:req.body.userId}).populate("busId")
     res.status(200).json(allTicket)
 } catch (error) {
     res.status(500).json(error.message)
@@ -26,16 +26,19 @@ try {
 
 
 const cancelTocart=async(req,res)=>{
-
+try {
+    const deletd=await cartModel.findByIdAndDelete(req.params.id);
+    res.status(200).json("Delted your ticket from Cart")
+} catch (error) {
+    res.status(500).json("Not deleted")
+}
 
 
 }
 
-const editCart=async(req,res)=>{
 
-}
 
 
 module.exports={
-    getAllcart,addTocart,cancelTocart,editCart
+    getAllcart,addTocart,cancelTocart
 }

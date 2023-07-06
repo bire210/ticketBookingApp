@@ -6,7 +6,7 @@ const SeatBook = () => {
   const [chooseSeat, setChooseSeat] = useState();
   useEffect(() => {
     async function fetchSeats() {
-      let item = JSON.parse(localStorage.getItem("item"));
+      let user = JSON.parse(localStorage.getItem("item"));
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -14,7 +14,7 @@ const SeatBook = () => {
       };
       try {
         const seats = await axios.get(
-          `http://localhost:8080/api/bus/search/${item._id}`,
+          `http://localhost:8080/api/bus/search/${user._id}`,
           config
         );
         let ob = seats.data.seats;
@@ -34,6 +34,7 @@ const SeatBook = () => {
 
   async function addToCart() {
     let user = JSON.parse(localStorage.getItem("user"));
+    let bus = JSON.parse(localStorage.getItem("item"));
     let token=user.token;
     const config = {
         headers: {
@@ -43,8 +44,16 @@ const SeatBook = () => {
       };
      
     try {
+     const cart=await axios.post("http://localhost:8080/api/bus/cart/add",{
+     userId:user._id,
+     busId:bus._id,
+     seatNo:chooseSeat
+     },config)
 
-    } catch (error) {}
+     console.log("tocket added")
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   return (
@@ -62,7 +71,7 @@ const SeatBook = () => {
                   addToCart();
                 }}
               >
-                {element[`${index + 1}`] ? "Booked" : "Availabe"}
+                {element[`${index + 1}`] ? <p>Booked</p> : "Availabe"}
               </button>
             </div>
           );

@@ -5,6 +5,9 @@ import Login from '../components/Login'
 import Register from '../components/Register'
 import SeatBook from '../components/SeatBook'
 import PrivateRoutes from './PrivateRoutes'
+import Cart from '../components/Cart'
+import AllBookeTicket from '../components/AllBookeTicket'
+import PayNow from '../components/PayNow'
 
 const AllRoutes = () => {
   return (
@@ -16,6 +19,9 @@ const AllRoutes = () => {
         <SeatBook/>
       </PrivateRoutes>}  > </Route> */}
        <Route path='/seatbook' element={<SeatBook/>} > </Route>
+       <Route path='/cart' element={<Cart/>} > </Route>
+       <Route path='/bookedticket' element={<AllBookeTicket/>} > </Route>
+       <Route path='/pay' element={<PayNow/>} > </Route>
     </Routes>
   )
 }

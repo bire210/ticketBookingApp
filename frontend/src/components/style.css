@@ -31,3 +31,19 @@
 .seatNo{
     width: 100px;
 }
+.book{
+background-color: green;
+color: white;
+font-size: 20px;
+border-radius: 5px;
+padding: 5px;
+margin: 2px;
+}
+.cancel{
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+}

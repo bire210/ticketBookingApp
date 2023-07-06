@@ -7,7 +7,7 @@ const bookedModel=require("../models/bookedModel");
 const getBookeDTicket=async(req,res)=>{
 
     try {
-        const allticket=await bookedModel.find({userId:req.body.userId})
+        const allticket=await bookedModel.find({userId:req.body.userId}).populate("busId")
         res.status(200).json(allticket)
     } catch (error) {
         res.status(500).json(error.message)
@@ -25,10 +25,11 @@ const getABookeDTicket=async(req,res)=>{
 }
 
 const BookeDTicket=async(req,res)=>{
-    console.log(req.params.id)
+    // console.log(req.params.id)
     try {
         const bookedTicket=await cartModel.findById(req.params.id)
         let updateSeat=bookedTicket.seatNo;
+        // console.log(bookedTicket)
         const delelteFromCart=await cartModel.findByIdAndDelete(req.params.id)
         const filter = { _id: bookedTicket.busId }; // Replace with the actual document _id
 
@@ -36,7 +37,7 @@ const BookeDTicket=async(req,res)=>{
         const update = { $set: { [`seats.${updateSeat}`]: true } };
     
         const result = await busModel.updateOne(filter, update);
-        console.log(result)
+        // console.log(result)
         const newTicket=new bookedModel({
             userId:bookedTicket.userId,
             busId:bookedTicket.busId,
@@ -52,12 +53,23 @@ const BookeDTicket=async(req,res)=>{
 }
 
 const cancelBookeDTicket=async(req,res)=>{
+   
+
+    // console.log(req.params.id)
     try {
-        const ticket=await bookedModel.findByIdAndDelete(req.params.id)
-        console.log(ticket)
-        let updateSeat=ticket.seatNo;
-        const bus=await busModel.updateOne({_id:ticket.busId},{$set:{[`seats.${updateSeat}`]:false}})
-        res.status(200).json(" Ticke has been canceld")
+        const bookedTicket=await bookedModel.findById({_id:req.params.id})
+        let updateSeat=bookedTicket.seatNo;
+        // console.log(bookedTicket)
+        const delelteFromCart=await bookedModel.findByIdAndDelete(bookedTicket._id)
+        // console.log(delelteFromCart)
+        const filter = { _id: bookedTicket.busId }; // Replace with the actual document _id
+
+        // Construct the update object to toggle the seat value to true dynamically
+        const update = { $set: { [`seats.${updateSeat}`]:false} };
+    
+        const result = await busModel.updateOne(filter, update);
+        // console.log(result)
+        res.status(200).json(" Ticket has been canceld")
     } catch (error) {
         res.status(500).json(error.message)
     }

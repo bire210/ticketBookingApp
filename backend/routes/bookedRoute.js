@@ -4,7 +4,7 @@ const bookedRouter=express.Router();
 const authenticate=require("../middlewares/authMiddleware")
 
 
-bookedRouter.get("/",authenticate,getBookeDTicket);
+bookedRouter.post("/",authenticate,getBookeDTicket);
 
 
 bookedRouter.get("/:id",authenticate,getABookeDTicket);
