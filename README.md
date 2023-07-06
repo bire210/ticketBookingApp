@@ -14,7 +14,7 @@ The ticket Booking system is a web-based application that allows users to book T
 
 **Server:** Node, Express , MongoDB Atlas
 
-**Client:** HTML, CSS ,Javascript
+**Client:** HTML, CSS ,Javascript,React.js
 
 
 ## Video Presentation 
