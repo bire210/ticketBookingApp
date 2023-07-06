@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "a221a441-6e09-4963-be72-e720e4e727d1",
+		"name": "TicketBookingApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24251592",
+		"_collection_link": "https://planetary-desert-450468.postman.co/workspace/New-Team-Workspace~bc0cba31-ec99-431a-a2e1-d5b2a8dd6a9a/collection/24251592-a221a441-6e09-4963-be72-e720e4e727d1?action=share&creator=24251592&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Birendra\",\r\n    \"email\":\"birendra@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Birendra\",\r\n    \"email\":\"birendra@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE BUS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"AC Bus\",\r\n    \"from\":\"Ranchi\",\r\n    \"to\":\"Bokaro\",\r\n    \"price\":600\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH ALL BUS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"from\":\"Ranchi\",\r\n    \"to\":\"Bokaro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH A BUS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"from\":\"Ranchi\",\r\n    \"to\":\"Bokaro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/search/64a622353ecd49c693ca66d7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"search",
+						"64a622353ecd49c693ca66d7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL CART TICKET",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTYyMmNiM2VjZDQ5YzY5M2NhNjZlMyIsImlhdCI6MTY4ODYwOTQ5MiwiZXhwIjoxNjg5NDczNDkyfQ.b8K_Y0Bkc8BkqdufUeUOZP5VO_gBlF76kd5-PwhbY1E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"64a4cd20078868591aaf7e6d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"cart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Booked Ticket",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"64a41d27d13f95b468c20930\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ticket to cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTYyMmNiM2VjZDQ5YzY5M2NhNjZlMyIsImlhdCI6MTY4ODYwOTQ5MiwiZXhwIjoxNjg5NDczNDkyfQ.b8K_Y0Bkc8BkqdufUeUOZP5VO_gBlF76kd5-PwhbY1E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"64a622cb3ecd49c693ca66e3\",\r\n    \"busId\":\"64a622353ecd49c693ca66d7\",\r\n    \"seatNo\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"cart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booked",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/book/64a4c414105a110f50754c92",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"book",
+						"64a4c414105a110f50754c92"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel The ticket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"64a41d27d13f95b468c20930\",\r\n    \"bustId\":\"64a43fa2f9d48fb60aba28de\",\r\n    \"seatNo\":[2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/book/64a4642dff61c9ab3d15d96b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"book",
+						"64a4642dff61c9ab3d15d96b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REMOVE FROM CART",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"64a41d27d13f95b468c20930\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bus/cart/64a4589fb7e08aabfde024af",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bus",
+						"cart",
+						"64a4589fb7e08aabfde024af"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

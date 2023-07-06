@@ -17,10 +17,10 @@ app.get("/",(req,res)=>{
     res.send("Home page")
 })
 
-app.use("/api/auth",authRouter)
-app.use("/api/bus",busRouter)
-app.use("/api/bus/cart",cartRouter)
-app.use("/api/bus/book",bookedRouter)
+app.use("/api/auth/",authRouter)
+app.use("/api/bus/",busRouter)
+app.use("/api/bus/cart/",cartRouter)
+app.use("/api/bus/book/",bookedRouter)
 
 app.use(notFound)
 app.use(errorHandler)

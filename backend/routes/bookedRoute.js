@@ -6,9 +6,7 @@ const authenticate=require("../middlewares/authMiddleware")
 
 bookedRouter.post("/",authenticate,getBookeDTicket);
 
-
 bookedRouter.get("/:id",authenticate,getABookeDTicket);
-
 
 bookedRouter.post("/:id",authenticate,BookeDTicket);
 
