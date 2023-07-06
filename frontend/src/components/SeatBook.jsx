@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Navigate ,Link} from 'react-router-dom';
 const SeatBook = () => {
   const [seatsofbus, setSeatsofBus] = useState([]);
   const [chooseSeat, setChooseSeat] = useState();
@@ -14,7 +14,7 @@ const SeatBook = () => {
       };
       try {
         const seats = await axios.get(
-          `http://localhost:8080/api/bus/search/${user._id}`,
+          `https://ticketbookingsystem.onrender.com/api/bus/search/${user._id}`,
           config
         );
         let ob = seats.data.seats;
@@ -44,7 +44,7 @@ const SeatBook = () => {
       };
      
     try {
-     const cart=await axios.post("http://localhost:8080/api/bus/cart/add",{
+     const cart=await axios.post("https://ticketbookingsystem.onrender.com/api/bus/cart/add",{
      userId:user._id,
      busId:bus._id,
      seatNo:chooseSeat
@@ -58,7 +58,9 @@ const SeatBook = () => {
 
   return (
     <div>
-      <h1 className="Heading">Seat Available</h1>
+      <div><h1 className="Heading">Seat Available</h1>
+      <Link to="/cart"><button style={{fontSize:"30px",marginLeft:"130px"}}>My Cart</button></Link>
+      </div>
       <div className="seatcontainer">
         {seatsofbus.map((element, index) => {
           return (
@@ -71,7 +73,7 @@ const SeatBook = () => {
                   addToCart();
                 }}
               >
-                {element[`${index + 1}`] ? <p>Booked</p> : "Availabe"}
+                {element[`${index + 1}`] ? <p style={{background:"red",color:"white"}}>Booked</p> : "Availabe"}
               </button>
             </div>
           );

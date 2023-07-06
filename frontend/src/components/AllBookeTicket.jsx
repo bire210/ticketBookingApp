@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate ,Link} from 'react-router-dom';
 const AllBookeTicket = () => {
   const [bookedTicket, setBookedTicket] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ const AllBookeTicket = () => {
       };
       try {
         const tickets = await axios.post(
-          `http://localhost:8080/api/bus/book`,
+          `https://ticketbookingsystem.onrender.com/api/bus/book`,
           {
             userId: user._id,
           },
@@ -31,7 +32,7 @@ const AllBookeTicket = () => {
     }
 
     fetcBookedTicket();
-  }, []);
+  }, [book]);
 
   async function cancelTicket(id) {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -44,7 +45,7 @@ const AllBookeTicket = () => {
     };
     try {
       const cancelTicket = await axios.delete(
-        `http://localhost:8080/api/bus/book/${id}`,
+        `https://ticketbookingsystem.onrender.com/api/bus/book/${id}`,
         config
       );
       if(book){
@@ -90,7 +91,8 @@ const AllBookeTicket = () => {
                   <td>{item.busId.price}</td>
                   <td>
                     <div className="action">
-                      <button className="book">Pay Now</button>
+                    <Link to="/pay"><button className="book">Pay Now</button></Link>
+                      
                       <button
                         className="cancel"
                         onClick={() => {

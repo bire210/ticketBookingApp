@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
 
 const PayNow = () => {
     const [name,setName]=useState("")
@@ -7,11 +8,15 @@ const PayNow = () => {
 const handleSubmit=(e)=>{
     e.preventDefault()
     alert("Payment is Done")
+   
 }
 
   return (
     <div>
-     <h1 className='Heading'>Fill Payment Details</h1>
+       <div><h1 className="Heading">Fill Payment Details</h1>
+      <Link to="/"><button style={{fontSize:"30px",marginLeft:"130px"}}>Home</button></Link>
+      </div>
+     
     <form onSubmit={handleSubmit} className='authForm' >
       <label>
         Number on Card:

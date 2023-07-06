@@ -32,7 +32,7 @@ const Register = () => {
       },
     };
 try {
-  const data=await axios.post('http://localhost:8080/api/auth/register',{name,email,password},config);
+  const data=await axios.post('https://ticketbookingsystem.onrender.com/api/auth/register',{name,email,password},config);
 alert("Register is done")
 } catch (error) {
   alert(error.message)

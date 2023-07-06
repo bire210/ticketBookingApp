@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate ,Link} from 'react-router-dom';
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ const Cart = () => {
       };
       try {
         const seats = await axios.post(
-          `http://localhost:8080/api/bus/cart`,
+          `https://ticketbookingsystem.onrender.com/api/bus/cart`,
           {
             userId: user._id,
           },
@@ -31,7 +32,7 @@ const Cart = () => {
       }
     }
     fetchCart();
-  }, []);
+  }, [book]);
 
   async function bookSeat(id) {
     // console.log(id)
@@ -47,7 +48,7 @@ const Cart = () => {
   
     try {
       const bookTicket = await axios.post(
-        `http://localhost:8080/api/bus/book/${id}`,{userId:user._id},
+        `https://ticketbookingsystem.onrender.com/api/bus/book/${id}`,{userId:user._id},
         config
       );
       if(book){
@@ -71,7 +72,7 @@ const Cart = () => {
     };
     try {
       const cancelTicket = await axios.delete(
-        `http://localhost:8080/api/bus/cart/${id}`,
+        `https://ticketbookingsystem.onrender.com/api/bus/cart/${id}`,
         config
       );
       if(book){
@@ -87,7 +88,10 @@ const Cart = () => {
 
   return (
     <div>
-      <h1 className="Heading">Ticket in My Cart </h1>
+      <div><h1 className="Heading">Ticket in My Cart</h1>
+      <Link to="/bookedticket"><button style={{fontSize:"30px",marginLeft:"130px"}}>see Booked Ticket</button></Link>
+      </div>
+      
       <div className="Table">
         {loading && (
           <table>
