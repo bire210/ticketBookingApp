@@ -24,7 +24,7 @@ const SearchForm = () => {
         },
       };
       const data = await axios.post(
-        "https://ticketbookingsystem.onrender.com/api/bus/search",
+        "https://tbs-ye6x.onrender.com/bus/search",
         {
           from: fromCity,
           to: toCity,

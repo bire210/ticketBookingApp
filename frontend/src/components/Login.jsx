@@ -25,7 +25,7 @@ const Login = () => {
       },
     };
 try {
-  const data=await axios.post('https://ticketbookingsystem.onrender.com/api/auth/login',{email,password},config);
+  const data=await axios.post('https://tbs-ye6x.onrender.com/auth/login',{email,password},config);
   localStorage.setItem("user",JSON.stringify(data.data))
   alert("Login Sucess")
   login()

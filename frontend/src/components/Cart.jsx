@@ -18,7 +18,7 @@ const Cart = () => {
       };
       try {
         const seats = await axios.post(
-          `https://ticketbookingsystem.onrender.com/api/bus/cart`,
+          `https://tbs-ye6x.onrender.com/cart`,
           {
             userId: user._id,
           },
@@ -48,7 +48,7 @@ const Cart = () => {
   
     try {
       const bookTicket = await axios.post(
-        `https://ticketbookingsystem.onrender.com/api/bus/book/${id}`,{userId:user._id},
+        `https://tbs-ye6x.onrender.com/book/${id}`,{userId:user._id},
         config
       );
       if(book){
@@ -72,7 +72,7 @@ const Cart = () => {
     };
     try {
       const cancelTicket = await axios.delete(
-        `https://ticketbookingsystem.onrender.com/api/bus/cart/${id}`,
+        `https://tbs-ye6x.onrender.com/cart/${id}`,
         config
       );
       if(book){

@@ -17,7 +17,7 @@ const AllBookeTicket = () => {
       };
       try {
         const tickets = await axios.post(
-          `https://ticketbookingsystem.onrender.com/api/bus/book`,
+          `https://tbs-ye6x.onrender.com/book`,
           {
             userId: user._id,
           },
@@ -45,7 +45,7 @@ const AllBookeTicket = () => {
     };
     try {
       const cancelTicket = await axios.delete(
-        `https://ticketbookingsystem.onrender.com/api/bus/book/${id}`,
+        `https://tbs-ye6x.onrender.com/book/${id}`,
         config
       );
       if(book){

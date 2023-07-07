@@ -14,7 +14,7 @@ const SeatBook = () => {
       };
       try {
         const seats = await axios.get(
-          `https://ticketbookingsystem.onrender.com/api/bus/search/${user._id}`,
+          `https://tbs-ye6x.onrender.com/bus/search/${user._id}`,
           config
         );
         let ob = seats.data.seats;
@@ -44,13 +44,13 @@ const SeatBook = () => {
       };
      
     try {
-     const cart=await axios.post("https://ticketbookingsystem.onrender.com/api/bus/cart/add",{
+     const cart=await axios.post("https://tbs-ye6x.onrender.com/cart/add",{
      userId:user._id,
      busId:bus._id,
      seatNo:chooseSeat
      },config)
 
-     console.log("tocket added")
+     alert("ticket is  added to cart")
     } catch (error) {
       alert(error.message)
     }
