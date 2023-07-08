@@ -12,7 +12,7 @@ The ticket Booking system is a web-based application that allows users to book T
 </p>
 
 
-**Server:** Node, Express , MongoDB Atlas
+**Server:** Node, Express, MongoDB Atlas
 
 **Client:** HTML, CSS ,Javascript,React.js
 
@@ -25,7 +25,7 @@ The ticket Booking system is a web-based application that allows users to book T
 
 **Server side:** Render cloud https://tbs-ye6x.onrender.com/
 
-**Client side:** Netlify https://64a6b68e6941e82039613be8--eloquent-semifreddo-240ff4.netlify.app/
+**Client side:** Netlify https://64a8b71dbcf4a12d9ab0bf41--phenomenal-frangollo-b5553e.netlify.app/
 
 ## Features 
 -  API Validation
@@ -43,6 +43,8 @@ https://github.com/bire210/ticketBookingApp.git
 ### Runs the project in the development mode
 
 [http://localhost:8080](http://localhost:8080)
+
+### Search bus from Ranchi to Bokaro only
 
 
 ## NPM Packages
