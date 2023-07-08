@@ -90,6 +90,7 @@ const Cart = () => {
     <div>
       <div><h1 className="Heading">Ticket in My Cart</h1>
       <Link to="/bookedticket"><button style={{fontSize:"30px",marginLeft:"130px"}}>see Booked Ticket</button></Link>
+      <Link to="/seatbook"><button style={{fontSize:"30px",marginLeft:"130px"}}>Check Seat Availble</button></Link>
       </div>
       
       <div className="Table">
@@ -106,6 +107,7 @@ const Cart = () => {
                 <th>FROM</th>
                 <th>TO</th>
                 <th>PRICE</th>
+                <th>SEAT NO</th>
                 <th>ACTION</th>
               </tr>
             </thead>
@@ -120,6 +122,7 @@ const Cart = () => {
                   <td>{item.busId.from}</td>
                   <td>{item.busId.to}</td>
                   <td>{item.busId.price}</td>
+                  <td>{item.seatNo}</td>
                   <td>
                     <div className="action">
                       <button

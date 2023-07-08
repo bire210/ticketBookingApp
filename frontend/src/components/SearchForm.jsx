@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const SearchForm = () => {
@@ -7,6 +7,30 @@ const SearchForm = () => {
   const [loading,setLoading]=useState(false)
   const [buses,setBuses]=useState([])
 
+  useEffect(()=>{
+   async function fetchCity(){
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const data = await axios.post(
+        "https://tbs-ye6x.onrender.com/bus/search",
+        {
+          from: "ranchi",
+          to: "bokaro",
+        },
+        config
+      );
+      setBuses(data.data);
+      setLoading(true)
+    } catch (error) {
+      alert(error.message)
+    }
+    }
+    fetchCity()
+  })
   const handleFromCityChange = (e) => {
     setFromCity(e.target.value);
   };

@@ -60,7 +60,10 @@ const AllBookeTicket = () => {
   }
   return (
     <div>
-      <h1 className="Heading">All Booked Tickets</h1>
+       <div><h1 className="Heading">All Booked Tickets</h1>
+      <Link to="/cart"><button style={{fontSize:"30px",marginLeft:"130px"}}>go TO My cart</button></Link>
+      <Link to="/seatbook"><button style={{fontSize:"30px",marginLeft:"130px"}}>Check Seat Availble</button></Link>
+      </div>
       <div className="Table">
         {loading && (
           <table>
@@ -75,6 +78,7 @@ const AllBookeTicket = () => {
                 <th>FROM</th>
                 <th>TO</th>
                 <th>PRICE</th>
+                <th>SEAT NO</th>
                 <th>ACTION</th>
               </tr>
             </thead>
@@ -88,7 +92,9 @@ const AllBookeTicket = () => {
                   <td>{item.busId.name}</td>
                   <td>{item.busId.from}</td>
                   <td>{item.busId.to}</td>
+                  
                   <td>{item.busId.price}</td>
+                  <td>{item.seatNo}</td>
                   <td>
                     <div className="action">
                     <Link to="/pay"><button className="book">Pay Now</button></Link>

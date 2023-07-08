@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate ,Link} from 'react-router-dom';
+import { Navigate, Link } from "react-router-dom";
 const SeatBook = () => {
   const [seatsofbus, setSeatsofBus] = useState([]);
   const [chooseSeat, setChooseSeat] = useState();
@@ -21,6 +21,7 @@ const SeatBook = () => {
         let arr = [];
         for (let x in ob) {
           let object = {};
+          object["number"]=x;
           object[`${x}`] = ob[x];
           arr.push(object);
         }
@@ -32,34 +33,39 @@ const SeatBook = () => {
     fetchSeats();
   }, [chooseSeat]);
 
-  async function addToCart() {
+  async function addToCart(sno) {
     let user = JSON.parse(localStorage.getItem("user"));
     let bus = JSON.parse(localStorage.getItem("item"));
-    let token=user.token;
+    let token = user.token;
     const config = {
-        headers: {
-          "Content-type": "application/json",
-          "Authorization":`Bearer ${token}`
-        },
-      };
-     
-    try {
-     const cart=await axios.post("https://tbs-ye6x.onrender.com/cart/add",{
-     userId:user._id,
-     busId:bus._id,
-     seatNo:chooseSeat
-     },config)
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-     alert("ticket is  added to cart")
+    try {
+       const cart=await axios.post("https://tbs-ye6x.onrender.com/cart/add",{
+       userId:user._id,
+       busId:bus._id,
+       seatNo:sno
+       },config)
+      // console.log({ userId: user._id, busId: bus._id, seatNo: sno });
+      alert("ticket is  added to cart");
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
   }
 
   return (
     <div>
-      <div><h1 className="Heading">Seat Available</h1>
-      <Link to="/cart"><button style={{fontSize:"30px",marginLeft:"130px"}}>My Cart</button></Link>
+      <div>
+        <h1 className="Heading">Seat Available</h1>
+        <Link to="/cart">
+          <button style={{ fontSize: "30px", marginLeft: "130px" }}>
+            My Cart
+          </button>
+        </Link>
       </div>
       <div className="seatcontainer">
         {seatsofbus.map((element, index) => {
@@ -69,11 +75,16 @@ const SeatBook = () => {
               <button
                 type="button"
                 onClick={(e) => {
-                  setChooseSeat(index + 1);
-                  addToCart();
+                  console.log(element.number)
+                  setChooseSeat(element.number);
+                  addToCart(element.number);
                 }}
               >
-                {element[`${index + 1}`] ? <p style={{background:"red",color:"white"}}>Booked</p> : "Availabe"}
+                {element[`${index + 1}`] ? (
+                  <p style={{ background: "red", color: "white" }}>Booked</p>
+                ) : (
+                  "Availabe"
+                )}
               </button>
             </div>
           );
