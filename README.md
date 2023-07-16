@@ -25,7 +25,7 @@ The ticket Booking system is a web-based application that allows users to book T
 
 **Server side:** Render cloud https://tbs-ye6x.onrender.com/
 
-**Client side:** Netlify https://64a8b71dbcf4a12d9ab0bf41--phenomenal-frangollo-b5553e.netlify.app/
+**Client side:** Netlify https://phenomenal-frangollo-b5553e.netlify.app/
 
 ## Features 
 -  API Validation
